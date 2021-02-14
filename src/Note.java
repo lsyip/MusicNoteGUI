@@ -161,4 +161,8 @@ public class Note {
          return "natural/white key";
       }
    }
+
+   public int getMidiNoteNumber(int noteValue) {
+      return noteValue + 69;
+   }
 } //end of class
