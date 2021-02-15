@@ -1,13 +1,4 @@
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
-
-import javax.sound.midi.MidiUnavailableException;
 
 /**
 *
@@ -19,7 +10,7 @@ public class Driver {
    *   Demonstrates the use of the Note class.
    *   @param args The command line arguments
    */
-   public static void main(String[] args) throws MidiUnavailableException {
+   public static void main(String[] args) {
 
       //https://stackoverflow.com/questions/26905717/not-a-sub-class-error
       //Launches UI
