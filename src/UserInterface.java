@@ -3,6 +3,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import javax.sound.midi.MidiUnavailableException;
@@ -16,22 +17,38 @@ import javax.sound.midi.MidiUnavailableException;
  */
 public class UserInterface extends Application {
 
+    /**
+     * Opens a synthesizer before the app opens.
+     * @throws MidiUnavailableException if midi component cannot be opened
+     */
     @Override
     public void init() throws MidiUnavailableException { //This method is used to load images or any other materials before the app is launched
         MidiPlayer.synth.open();
     }
 
+    /**
+     * Sets up the JavaFX window
+     */
     @Override
     public void start(Stage stage) {
-        stage.setTitle("Hello, Music");
+        stage.setTitle("Music Note Picker");
 
-        Label l = new Label("Interval picker");
+        Label l = new Label("Notes");
+        l.setFont(new Font("Times New Roman", 32));
+        l.setTranslateX(50);
+        l.setTranslateY(75);
+
         Button tuningNote = new Button("Tuning Note");
         Button buttonHi = new Button("Higher");
         Button buttonLow = new Button("Lower");
         Button buttonUpFifth = new Button("Perfect Fifth Up");
         Button buttonDownFifth = new Button("Perfect Fifth Down");
 
+        tuningNote.setTranslateX(300);
+        buttonHi.setTranslateX(300);
+        buttonLow.setTranslateX(300);
+        buttonUpFifth.setTranslateX(300);
+        buttonDownFifth.setTranslateX(300);
 
         tuningNote.setOnAction(actionEvent -> {  //EventHandler replaced with lambda
             try {
@@ -83,13 +100,16 @@ public class UserInterface extends Application {
             }
         });
         VBox root = new VBox();
-        Scene scene = new Scene(root, 500, 500);
+        Scene scene = new Scene(root, 500, 250);
         root.getChildren().addAll(l, tuningNote, buttonHi, buttonLow, buttonUpFifth, buttonDownFifth);
 
         stage.setScene(scene);
         stage.show();
     }
 
+    /**
+     * Closes synthesizer when application is closed.
+     */
     @Override
     public void stop() { //Runs after the app is closed
         MidiPlayer.synth.close();

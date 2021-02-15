@@ -26,11 +26,12 @@ public class MidiPlayer {
     //static Instrument[] instrument = synth.getDefaultSoundbank().getInstruments();
 
     //default constructor
-    public MidiPlayer() throws MidiUnavailableException {
+    public MidiPlayer() {
     }
 
     public static void playTuningNote() throws MidiUnavailableException {
-        note.setNoteValue(0);
+        noteValue = 0;
+        note.setNoteValue(noteValue);
         midiChannel[0].noteOn(note.getMidiNoteNumber(note.getNoteValue()), 100);
     }
 
@@ -61,7 +62,7 @@ public class MidiPlayer {
     }
 
     public static String getNoteText() {
-        return note.computeName(note.getNoteValue()) + note.computeFrequency(note.getNoteValue());
+        return note.computeName(note.getNoteValue()) + String.format("%.2f", note.computeFrequency(note.getNoteValue()));
     }
 
 }
