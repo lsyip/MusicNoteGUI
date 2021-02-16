@@ -27,48 +27,30 @@ public class UserInterface extends Application {
      */
     @Override
     public void init() throws MidiUnavailableException { //This method is used to load images or any other materials before the app is launched
-<<<<<<< HEAD
         MidiPlayer.synth.open(); //opens up the synth before the app is opened, so we only have to do it once
-=======
-        MidiPlayer.synth.open(); //loads up the synth before the app is opened so we only have to open it once
->>>>>>> ae67ef3f673d4ed1e03f779b56ede5ceca51de4b
     }
 
     /**
      * Sets up the JavaFX window
      */
     @Override
-<<<<<<< HEAD
-    public void start(Stage stage) {
-        stage.setTitle("Music Note Picker"); //sets window title
 
-        Label l = new Label("Notes"); //label to display notes and frequencies
-=======
     public void start(Stage stage) { //sets up JavaFX GUI
         stage.setTitle("Music Note Picker"); //sets window title
 
         Label l = new Label("Notes"); //label to display note name and frequency
->>>>>>> ae67ef3f673d4ed1e03f779b56ede5ceca51de4b
         l.setFont(new Font("Times New Roman", 32));
         l.setTranslateX(50);
         l.setTranslateY(75);
 
-<<<<<<< HEAD
-        //creates buttons
-=======
         //buttons
->>>>>>> ae67ef3f673d4ed1e03f779b56ede5ceca51de4b
         Button tuningNote = new Button("Tuning Note");
         Button buttonHi = new Button("Higher");
         Button buttonLow = new Button("Lower");
         Button buttonUpFifth = new Button("Perfect Fifth Up");
         Button buttonDownFifth = new Button("Perfect Fifth Down");
 
-<<<<<<< HEAD
-        //move elements around
-=======
         //moving things around
->>>>>>> ae67ef3f673d4ed1e03f779b56ede5ceca51de4b
         tuningNote.setTranslateX(300);
         buttonHi.setTranslateX(300);
         buttonLow.setTranslateX(300);
@@ -105,7 +87,6 @@ public class UserInterface extends Application {
             MidiPlayer.playDownFifth();
             l.setText(MidiPlayer.getNoteText());
         });
-<<<<<<< HEAD
 
         VBox root = new VBox(); //VBox displays all scene elements vertically
         Scene scene = new Scene(root, 500, 250); //sets VBox root and scene size
@@ -113,14 +94,6 @@ public class UserInterface extends Application {
 
         stage.setScene(scene); //puts everything together on the stage
         stage.show(); //makes the window visible
-=======
-        VBox root = new VBox(); //VBox root displays elements vertically
-        Scene scene = new Scene(root, 500, 250); //set Vbox as root of the scene
-        root.getChildren().addAll(l, tuningNote, buttonHi, buttonLow, buttonUpFifth, buttonDownFifth); //add buttons and labels
-
-        stage.setScene(scene); //put it all together
-        stage.show(); //make it visible
->>>>>>> ae67ef3f673d4ed1e03f779b56ede5ceca51de4b
     }
 
     /**
