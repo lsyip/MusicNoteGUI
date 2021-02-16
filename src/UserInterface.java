@@ -13,7 +13,7 @@ import javax.sound.midi.MidiUnavailableException;
 
 /**
  * @author Kody Simpson
- *
+ * @author Lynn Yip
  */
 public class UserInterface extends Application {
 
@@ -23,7 +23,7 @@ public class UserInterface extends Application {
      */
     @Override
     public void init() throws MidiUnavailableException { //This method is used to load images or any other materials before the app is launched
-        MidiPlayer.synth.open();
+        MidiPlayer.synth.open(); //opens up the synth before the app is opened, so we only have to do it once
     }
 
     /**
@@ -31,80 +31,64 @@ public class UserInterface extends Application {
      */
     @Override
     public void start(Stage stage) {
-        stage.setTitle("Music Note Picker");
+        stage.setTitle("Music Note Picker"); //sets window title
 
-        Label l = new Label("Notes");
+        Label l = new Label("Notes"); //label to display notes and frequencies
         l.setFont(new Font("Times New Roman", 32));
         l.setTranslateX(50);
         l.setTranslateY(75);
 
+        //creates buttons
         Button tuningNote = new Button("Tuning Note");
         Button buttonHi = new Button("Higher");
         Button buttonLow = new Button("Lower");
         Button buttonUpFifth = new Button("Perfect Fifth Up");
         Button buttonDownFifth = new Button("Perfect Fifth Down");
 
+        //move elements around
         tuningNote.setTranslateX(300);
         buttonHi.setTranslateX(300);
         buttonLow.setTranslateX(300);
         buttonUpFifth.setTranslateX(300);
         buttonDownFifth.setTranslateX(300);
 
+        //Event Handlers for buttons
         tuningNote.setOnAction(actionEvent -> {  //EventHandler replaced with lambda
-            try {
-                MidiPlayer.stopNote();
-                MidiPlayer.playTuningNote();
-                l.setText(MidiPlayer.getNoteText());
-            } catch (MidiUnavailableException e) {
-                e.printStackTrace();
-            }
+            MidiPlayer.stopNote();
+            MidiPlayer.playTuningNote();
+            l.setText(MidiPlayer.getNoteText());
         });
 
         buttonHi.setOnAction(actionEvent -> {
-            try {
-                MidiPlayer.stopNote();
-                MidiPlayer.playHigher();
-                l.setText(MidiPlayer.getNoteText());
-            } catch (MidiUnavailableException e) {
-                e.printStackTrace();
-            }
+            MidiPlayer.stopNote();
+            MidiPlayer.playHigher();
+            l.setText(MidiPlayer.getNoteText());
         });
 
         buttonLow.setOnAction(actionEvent -> {
-            try {
-                MidiPlayer.stopNote();
-                MidiPlayer.playLower();
-                l.setText(MidiPlayer.getNoteText());
-            } catch (MidiUnavailableException e) {
-                e.printStackTrace();
-            }
+            MidiPlayer.stopNote();
+            MidiPlayer.playLower();
+            l.setText(MidiPlayer.getNoteText());
         });
 
         buttonUpFifth.setOnAction(actionEvent -> {
-            try {
-                MidiPlayer.stopNote();
-                MidiPlayer.playUpFifth();
-                l.setText(MidiPlayer.getNoteText());
-            } catch (MidiUnavailableException e) {
-                e.printStackTrace();
-            }
+            MidiPlayer.stopNote();
+            MidiPlayer.playUpFifth();
+            l.setText(MidiPlayer.getNoteText());
         });
 
         buttonDownFifth.setOnAction(actionEvent -> {
-            try {
-                MidiPlayer.stopNote();
-                MidiPlayer.playDownFifth();
-                l.setText(MidiPlayer.getNoteText());
-            } catch (MidiUnavailableException e) {
-                e.printStackTrace();
-            }
+            MidiPlayer.stopNote();
+            MidiPlayer.playDownFifth();
+            l.setText(MidiPlayer.getNoteText());
         });
-        VBox root = new VBox();
-        Scene scene = new Scene(root, 500, 250);
-        root.getChildren().addAll(l, tuningNote, buttonHi, buttonLow, buttonUpFifth, buttonDownFifth);
 
-        stage.setScene(scene);
-        stage.show();
+        VBox root = new VBox(); //VBox displays all scene elements vertically
+        Scene scene = new Scene(root, 500, 250); //sets VBox root and scene size
+        root.getChildren().addAll(l, tuningNote, buttonHi, buttonLow, buttonUpFifth, buttonDownFifth); //adds elements
+
+        stage.setScene(scene); //puts everything together on the stage
+        stage.show(); //makes the window visible
     }
 
     /**
@@ -112,7 +96,7 @@ public class UserInterface extends Application {
      */
     @Override
     public void stop() { //Runs after the app is closed
-        MidiPlayer.synth.close();
+        MidiPlayer.synth.close(); //closes the synth
     }
 }
 
