@@ -1,10 +1,11 @@
 import javax.sound.midi.*;
 
-// The MidiPlayer class structure was copied from this YouTube video:
+// The MidiPlayer class structure was copied from this YouTube video by Makai Smith (digiplasty on YouTube):
 // https://youtu.be/lhcVdnQ_R1U
 
 /**
- * @author Makai Smith (digiplasty on YouTube)
+ * @author Makai Smith (digiplasty on YouTube) - setting up the synth and midiChannels
+ * @author Lynn Yip - methods
  */
 
 public class MidiPlayer {

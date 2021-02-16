@@ -14,7 +14,7 @@ public class Driver {
 
       //https://stackoverflow.com/questions/26905717/not-a-sub-class-error
       //Launches UI
-      Application.launch(UserInterface.class, args);
+      Application.launch(UserInterface.class, args); //call the launch method from the application class, feed it the UserInterface class command line args.
 
       Note tuningNote = new Note(); //A440
       System.out.println(tuningNote);

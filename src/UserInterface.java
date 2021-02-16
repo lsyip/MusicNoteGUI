@@ -12,8 +12,7 @@ import javax.sound.midi.MidiUnavailableException;
 // JavaFX 12 Tutorial by Kody Simpson
 
 /**
- * @author Kody Simpson
- *
+ * @author Kody Simpson - setting up JavaFX stage and button action event code
  */
 public class UserInterface extends Application {
 
@@ -23,27 +22,29 @@ public class UserInterface extends Application {
      */
     @Override
     public void init() throws MidiUnavailableException { //This method is used to load images or any other materials before the app is launched
-        MidiPlayer.synth.open();
+        MidiPlayer.synth.open(); //loads up the synth before the app is opened so we only have to open it once
     }
 
     /**
      * Sets up the JavaFX window
      */
     @Override
-    public void start(Stage stage) {
-        stage.setTitle("Music Note Picker");
+    public void start(Stage stage) { //sets up JavaFX GUI
+        stage.setTitle("Music Note Picker"); //sets window title
 
-        Label l = new Label("Notes");
+        Label l = new Label("Notes"); //label to display note name and frequency
         l.setFont(new Font("Times New Roman", 32));
         l.setTranslateX(50);
         l.setTranslateY(75);
 
+        //buttons
         Button tuningNote = new Button("Tuning Note");
         Button buttonHi = new Button("Higher");
         Button buttonLow = new Button("Lower");
         Button buttonUpFifth = new Button("Perfect Fifth Up");
         Button buttonDownFifth = new Button("Perfect Fifth Down");
 
+        //moving things around
         tuningNote.setTranslateX(300);
         buttonHi.setTranslateX(300);
         buttonLow.setTranslateX(300);
@@ -99,12 +100,12 @@ public class UserInterface extends Application {
                 e.printStackTrace();
             }
         });
-        VBox root = new VBox();
-        Scene scene = new Scene(root, 500, 250);
-        root.getChildren().addAll(l, tuningNote, buttonHi, buttonLow, buttonUpFifth, buttonDownFifth);
+        VBox root = new VBox(); //VBox root displays elements vertically
+        Scene scene = new Scene(root, 500, 250); //set Vbox as root of the scene
+        root.getChildren().addAll(l, tuningNote, buttonHi, buttonLow, buttonUpFifth, buttonDownFifth); //add buttons and labels
 
-        stage.setScene(scene);
-        stage.show();
+        stage.setScene(scene); //put it all together
+        stage.show(); //make it visible
     }
 
     /**
