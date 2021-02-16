@@ -12,12 +12,8 @@ import javax.sound.midi.MidiUnavailableException;
 // JavaFX 12 Tutorial by Kody Simpson
 
 /**
-<<<<<<< HEAD
  * @author Kody Simpson
  * @author Lynn Yip
-=======
- * @author Kody Simpson - setting up JavaFX stage and button action event code
->>>>>>> ae67ef3f673d4ed1e03f779b56ede5ceca51de4b
  */
 public class UserInterface extends Application {
 

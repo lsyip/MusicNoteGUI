@@ -4,15 +4,9 @@ import javax.sound.midi.*;
 // https://youtu.be/lhcVdnQ_R1U
 
 /**
-<<<<<<< HEAD
  * @author Makai Smith (digiplasty on YouTube)
  * @author Lynn Yip
-=======
- * @author Makai Smith (digiplasty on YouTube) - setting up the synth and midiChannels
- * @author Lynn Yip - methods
->>>>>>> ae67ef3f673d4ed1e03f779b56ede5ceca51de4b
  */
-
 public class MidiPlayer {
 
     static Note note = new Note();
