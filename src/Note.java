@@ -6,7 +6,7 @@ import java.util.Arrays; //for binarySearch() method
 *   
 * @author Lynn Yip
 */
-public class Note {
+public class Note implements Comparable<Note>{
    
    //DATA
    private String length; //the duration of the note
@@ -165,4 +165,24 @@ public class Note {
    public int getMidiNoteNumber(int noteValue) {
       return noteValue + 69;
    }
+
+   /*
+   @Override
+   public int compareTo(Note o) {
+      if (this.computeFrequency(getNoteValue()) > o.computeFrequency(getNoteValue())) {
+         return 1;
+      }
+      else if (this.computeFrequency(getNoteValue()) < o.computeFrequency(getNoteValue())) {
+         return -1;
+      }
+      else {
+         return 0;
+      }
+   }
+   */
+
+   public int compareTo(Note o) {
+      return Double.compare(getNoteValue(), o.getNoteValue());
+   }
+
 } //end of class
