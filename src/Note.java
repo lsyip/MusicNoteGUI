@@ -166,7 +166,7 @@ public class Note implements Comparable<Note>{
       return noteValue + 69;
    }
 
-   /*
+   /* Simplified using Double.compare()
    @Override
    public int compareTo(Note o) {
       if (this.computeFrequency(getNoteValue()) > o.computeFrequency(getNoteValue())) {
@@ -181,8 +181,61 @@ public class Note implements Comparable<Note>{
    }
    */
 
+   @Override
    public int compareTo(Note o) {
-      return Double.compare(getNoteValue(), o.getNoteValue());
+      if (Double.compare(getNoteValue(), o.getNoteValue()) != 0) {
+         return Double.compare(getNoteValue(), o.getNoteValue());
+      }
+      else {
+         boolean flag;
+         String len1 = this.getLength();
+         String len2 = o.getLength();
+
+         ArrayList<String> lengths = new ArrayList<>();
+         lengths.add(len1);
+         lengths.add(len2);
+
+         ArrayList<Integer> results = new ArrayList<>();
+
+         for (String len : lengths) {
+            if (len.equalsIgnoreCase("eighth")) {
+               results.add(1);
+            }
+            else if (len.equalsIgnoreCase("quarter")) {
+               results.add(2);
+            }
+            else if (len.equalsIgnoreCase("half")) {
+               results.add(3);
+            }
+            else {
+               results.add(4);
+            }
+         }
+
+         if (results.get(0) > results.get(1)){
+            return 1;
+         }
+         else if(results.get(0) < results.get(1)) {
+            return -1;
+         }
+         else {
+            return 0;
+         }
+      }
    }
 
+   public int compareLength(Note n) {
+      switch (n.getLength()) {
+         case "eighth":
+            return 1;
+         case "quarter":
+            return 2;
+         case "half":
+            return 3;
+         case "whole":
+            return 4;
+         default:
+            return 0;
+      }
+   }
 } //end of class
