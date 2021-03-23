@@ -166,7 +166,7 @@ public class Note implements Comparable<Note>{
       return noteValue + 69;
    }
 
-   /* Simplified using Double.compare()
+   /* Simplified using Double.compare() -- See below
    @Override
    public int compareTo(Note o) {
       if (this.computeFrequency(getNoteValue()) > o.computeFrequency(getNoteValue())) {
@@ -181,13 +181,26 @@ public class Note implements Comparable<Note>{
    }
    */
 
+   // BASIC VERSION
+
+   /**
+    * Compares note values by frequency.
+    * @param o The Note object to be compared.
+    * @return An integer.
+    */
+   /*
    @Override
    public int compareTo(Note o) {
-      if (Double.compare(getNoteValue(), o.getNoteValue()) != 0) {
-         return Double.compare(getNoteValue(), o.getNoteValue());
-      }
-      else {
-         boolean flag;
+         return Double.compare(computeFrequency(getNoteValue()), o.computeFrequency(o.getNoteValue()));
+   }
+*/
+
+
+   //FANCY ATTEMPT
+
+
+   @Override
+   public int compareTo(Note o) {
          String len1 = this.getLength();
          String len2 = o.getLength();
 
@@ -219,23 +232,10 @@ public class Note implements Comparable<Note>{
             return -1;
          }
          else {
-            return 0;
+            return Double.compare(getNoteValue(), o.getNoteValue());
          }
-      }
+
+
    }
 
-   public int compareLength(Note n) {
-      switch (n.getLength()) {
-         case "eighth":
-            return 1;
-         case "quarter":
-            return 2;
-         case "half":
-            return 3;
-         case "whole":
-            return 4;
-         default:
-            return 0;
-      }
-   }
 } //end of class
